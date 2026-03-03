@@ -22,15 +22,9 @@ import { chromium } from 'playwright'
   // Try these locator variations one by one — comment out others
 
   // Option 1: Best - getByLabel (if label exists and is visible/associated)
-  await page.getByLabel('Username').or(page.getByLabel('Email')).fill('yourusername') // fallback
-  await page.getByLabel('Password').fill('yourpassword')
+  await page.getByLabel('Username').or(page.getByLabel('Email')).fill('username') // fallback
+  await page.getByLabel('Password').fill('Atikur321')
 
-  // Option 2: If no label, use placeholder
-  // await page.getByPlaceholder('Enter username or email').fill('yourusername');
-  // await page.getByPlaceholder('Password').fill('yourpassword');
-
-  // Wait a sec to see if fields got filled
-  // await page.waitForTimeout(2000) // just for debug
 
   // Submit: Try click first
   const loginButton = page.getByRole('button', { name: /login|sign in|submit|continue|entrar/i })
@@ -55,5 +49,5 @@ import { chromium } from 'playwright'
     }
   }
   // Keep open for inspection
-  await browser.close()
+  // await browser.close()
 })()
