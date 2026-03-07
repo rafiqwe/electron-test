@@ -39,6 +39,51 @@ const electronAPI: ElectronAPI = {
   updateScrollPosition: (scrollY: number) => ipcRenderer.invoke('update-scroll-position', scrollY),
   getGridHeight: () => ipcRenderer.invoke('get-grid-height'),
 
+  // Enhanced action handlers
+  scrollAccount: (accountId: string, duration?: number) =>
+    ipcRenderer.invoke('scroll-account', { accountId, duration }),
+  scrollAllAccounts: (duration?: number) => ipcRenderer.invoke('scroll-all-accounts', { duration }),
+  watchReelsAccount: (accountId: string, duration?: number) =>
+    ipcRenderer.invoke('watch-reels-account', { accountId, duration }),
+  watchReelsAllAccounts: (duration?: number) =>
+    ipcRenderer.invoke('watch-reels-all-accounts', { duration }),
+  likePostsAccount: (accountId: string, count?: number) =>
+    ipcRenderer.invoke('like-posts-account', { accountId, count }),
+  likePostsAllAccounts: (count?: number) =>
+    ipcRenderer.invoke('like-posts-all-accounts', { count }),
+  // commentOnPosts: (accountId: string, comment: string, count?: number) =>
+  //   ipcRenderer.invoke('comment-on-posts', { accountId, comment, count }),
+  // sharePostsAccount: (accountId: string, count?: number) =>
+  //   ipcRenderer.invoke('share-posts-account', { accountId, count }),
+  followPeopleAccount: (accountId: string, count?: number) =>
+    ipcRenderer.invoke('follow-people-account', { accountId, count }),
+  reactToStories: (accountId: string, count?: number) =>
+    ipcRenderer.invoke('react-to-stories', { accountId, count }),
+  watchVideosAccount: (accountId: string, duration?: number) =>
+    ipcRenderer.invoke('watch-videos-account', { accountId, duration }),
+  stopAllActionsAccount: (accountId: string) =>
+    ipcRenderer.invoke('stop-all-actions-account', accountId),
+  stopAllActions: () => ipcRenderer.invoke('stop-all-actions'),
+
+  // Comment actions
+  commentOnPosts: (accountId: string, comment: string, count?: number) =>
+    ipcRenderer.invoke('comment-on-posts', { accountId, comment, count }),
+  commentOnPostsAll: (comment: string, count?: number) =>
+    ipcRenderer.invoke('comment-on-posts-all', { comment, count }),
+
+  // Share actions
+  sharePostsAccount: (accountId: string, count?: number, shareType?: string) =>
+    ipcRenderer.invoke('share-posts-account', { accountId, count, shareType }),
+  sharePostsAll: (count?: number, shareType?: string) =>
+    ipcRenderer.invoke('share-posts-all', { count, shareType }),
+
+  // Follow/Friend actions
+  followPagesAccount: (accountId: string, count?: number) =>
+    ipcRenderer.invoke('follow-pages-account', { accountId, count }),
+  followPagesAll: (count?: number) => ipcRenderer.invoke('follow-pages-all', { count }),
+  joinGroupsAccount: (accountId: string, count?: number) =>
+    ipcRenderer.invoke('join-groups-account', { accountId, count }),
+
   // Legacy
   ping: () => ipcRenderer.send('ping')
 }
