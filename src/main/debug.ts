@@ -96,4 +96,3 @@ const { buttonRect, success } = await wc.executeJavaScript(
 `,
   true
 )
-
