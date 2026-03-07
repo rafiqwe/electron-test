@@ -158,22 +158,6 @@ export async function performFacebookLogin(
     true
   )
 
-  // Fallback: if password still empty → direct set (uncomment if needed)
-  /*
-  const passSet = await wc.executeJavaScript<boolean>(`
-    const p = document.querySelector('input[type="password"]');
-    if (p && !p.value) {
-      p.value = "${account.password.replace(/"/g, '\\"')}";
-      p.dispatchEvent(new InputEvent('input', {bubbles:true, composed:true}));
-      p.dispatchEvent(new Event('change', {bubbles:true}));
-      return true;
-    }
-    return false;
-  `, true);
-
-  if (passSet) console.log('[FB-LOGIN] Used direct value set for password');
-  */
-
   // ───────────────────────────────────────────────
   // 4. Click button or Enter
   // ───────────────────────────────────────────────
@@ -197,6 +181,3 @@ export async function performFacebookLogin(
   console.log('[FB-LOGIN] Sequence done')
   return true
 }
-
-// Usage example:
-// await performFacebookLogin(yourWebContents, { username: 'test@example.com', password: 'pass123' });
